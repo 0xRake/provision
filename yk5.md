@@ -69,7 +69,6 @@ It's useful to visualize such a hierarchy, which shows what
 security of each of the services is based on. The simpler this configuration is, the
 the better.
 
-.. code-block:: text
 
   YubiKey && Authenticator
   ├─ 1Password
@@ -125,6 +124,97 @@ current password of letters, numbers and special characters.
 Secret key
 ++++++++++++++
 
-1Password for login with n
+The secret key
+++++++++++++++
 
-Translated with www.DeepL.com/Translator (free version)
+1Password to log in from a new device requires not only a Master password, but also
+secret key: https://support.1password.com/secret-key-security/. This
+an additional degree of protection dramatically increases the protection of your data, but also
+creates some inconvenience. If the Master password can be remembered, then the secret
+a 34 character key needs to be stored somewhere. Disable this feature
+you can't, even if you're using two-factor authentication.
+
+The secret key is generated during registration in 1Password, you will be prompted
+download 1Password Emergency Kit as a PDF file, which will contain the secret itself
+key and QR code for quick app setup. 1Password offers to store
+it in printed form or on a special flash drive somewhere in the safe. In this and
+is an inconvenience.
+
+To be fair, it should be clarified that in the case when you lose your phone, but
+you still have a laptop with you, then you can read the secret key with
+laptop. The main thing is that one of the authenticated
+devices.
+
+But since we will use YubiKey keys, we can use them like
+data store. How to use this will be described below:
+`Secret key to the password manager`_.
+
+Password for phone and computer
+--------------------------------
+
+Modern Apple phones and computers are equipped with hardware storage
+personal information (Secure Enclave), this vault will not allow
+try your password as many times as you want. But that's all for making a good password
+should still be taken very seriously.
+
+For example, few people realize that Apple allows you to perform certain actions
+associated with your Apple ID without asking for your Apple ID password,
+it will be enough to enter the password from the phone / computer. So bad
+your phone/computer password will negate a good Apple ID password.
+
+Here it is probably worth repeating again: passwords should not be repeated and should not
+be able to pick them up knowing something about you, such as your date of birth,
+your relatives and friends, your hobbies.
+
+- for the password from the device, you can use the same method as for
+  Master password to password manager
+- iPhone allows you to set a password of any complexity, not just a 6-digit code
+- it is better to increase the complexity of the password due to its length, and not due to
+  using special characters:
+
+  * on a computer, the hands remember where the letters are located on the keyboard better than
+    where special characters are located. When touch dialing, entering a letter
+    password will be faster and with fewer errors, this will enable
+    increase password length
+  * on the phone, entering special characters requires pressing two buttons - buttons
+    ``123`` and special character buttons, this slows down password entry a lot
+
+2FA or MFA
+~~~~~~~~~~~
+
+Types of the second factor, sorted by the level of protection:
+
+- phone (low security level)
+- push notifications
+- authenticator
+- hardware security key (high level of protection)
+- biometric hardware security key
+
+Different services provide different levels of support for two-factor
+authentication. Somewhere you can use only a phone number, somewhere
+all possible methods can be used. The ideal option will be described below.
+service that supports both authenticators and hardware security keys
+(Google, 1Password, GitHub). For other services:
+
+- choose the best level of protection (see the list above)
+- when it is not possible to configure more than one type of the second factor
+  authentication, **be sure to save the recovery codes** of access in
+  password manager
+
+Telephone number
+----------------
+
+Most likely you have already set up your phone number as a second factor
+authentication on some services. After setting up the authenticator app
+and two hardware YubiKey keys, phone number as a second factor
+authentication should be disabled. Otherwise, it will become the weakest link that
+will negate the benefit of hardware security keys.
+
+Authenticator
+--------------
+
+Authenticator application is worse in terms of security than hardware ones
+security keys, it does not prevent phishing attacks, so use
+they are not worth it in daily practice. We need an authenticator as another
+kind of second factor for more redundancy, and many services will require you to
+first register authenticator as second
